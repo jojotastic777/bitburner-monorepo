@@ -1,7 +1,7 @@
 # [@bitburner-monorepo](../../README.md)/[ws-stats-viewer](#)
 This project contains the viewer-side of my external Bitburner GUI. For now, only shows the in-game stats and a few extras, but should be easy to expand in the future.
 
-![A screenshot of the viewer in action.](./docs/screenshot-1.png)
+![A screenshot of the viewer in action.](./docs/demo-1.gif)
 
 ## Build Instructions
 0. Make sure that all the usage prerequisites listed in the main repository's [README.md](../../README.md) are fulfilled.
