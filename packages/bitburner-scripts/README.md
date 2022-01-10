@@ -7,4 +7,4 @@ This project contains all of my bitburner scripts, several of which are needed f
 
 That's it. All the scripts in this project should now exist in the `dist/bitburner-scripts` folder in the base directory of this repository.
 
-You can now copy the scripts from that folder into the game however you like. However, might I suggest using the [WebSocket Script Update Server][../ws-update-server/README.md] for that?
+You can now copy the scripts from that folder into the game however you like. However, might I suggest using the [WebSocket Script Update Server](../ws-update-server/README.md) for that?
