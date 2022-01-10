@@ -1,0 +1,6 @@
+{
+  "name": "@bitburner-monorepo/bitburner-scripts",
+  "scripts": {
+    "test": "node index.js"
+  }
+}

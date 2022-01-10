@@ -1,0 +1,12 @@
+{
+  "name": "@bitburner-monorepo/ws-stats-server",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.2.2"
+  },
+  "dependencies": {
+    "ws": "^8.4.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "extends": "../../tsconfig.base.json",
+
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "../../dist/ws-update-server",
+
+        "module": "esnext",
+        "target": "esnext",
+        "moduleResolution": "node",
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "esModuleInterop": true,
+        "sourceMap": false,
+        "strict": true,
+
+        "paths": {
+            "@global/UpdateMessage": [ "@types/UpdateMessage.d.ts" ]
+        }
+    }
+}

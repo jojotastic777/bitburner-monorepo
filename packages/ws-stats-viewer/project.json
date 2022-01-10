@@ -1,0 +1,43 @@
+{
+  "root": "packages/ws-stats-viewer",
+  "srcRoot": "packages/ws-stats-viewer/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "dist/ws-stats-viewer" ],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "packages/ws-stats-viewer",
+        "command": "npx webpack --config webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "command": "npx webpack --config webpack.development.js"
+        },
+        "production": {
+          "command": "npx webpack --config webpack.production.js"
+        }
+      }
+    },
+
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "dist/ws-stats-viewer" ],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ],
+      "options": {
+        "cwd": "packages/ws-stats-viewer",
+        "command": "npx webpack serve --config webpack.development.js"
+      }
+    }
+  }
+}

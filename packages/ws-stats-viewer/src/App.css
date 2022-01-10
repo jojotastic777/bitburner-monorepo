@@ -1,0 +1,25 @@
+#app {
+    width: 100vw;
+    height: 100vh;
+
+    box-sizing: border-box;
+    padding: 1em;
+
+    background-color: var(--bg-dim);
+    color: var(--fg);
+
+    overflow: hidden;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    height: 100%;
+
+    gap: 0.5em;
+}

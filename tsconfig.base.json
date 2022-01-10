@@ -5,16 +5,23 @@
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "esnext",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "outDir": "dist",
+    "paths": {
+      "@global/UpdateMessage": ["@types/UpdateMessage.d.ts"],
+      "@global/bitburner": ["@types/NetscriptDefinitions.d.ts"],
+      "@global/statsViewer": ["@types/statsViewer.d.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

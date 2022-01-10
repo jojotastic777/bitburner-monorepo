@@ -1,0 +1,14 @@
+{
+  "name": "@bitburner-monorepo/ws-update-server",
+  "type": "module",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.2.2"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.2",
+    "ws": "^8.4.0"
+  }
+}

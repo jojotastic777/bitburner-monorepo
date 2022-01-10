@@ -1,0 +1,14 @@
+.ProgressBar {
+    background-color: var(--bg-dim);
+
+    width: 100%;
+    height: 0.2em;
+}
+
+.ProgressBar > .bar-fill {
+    background-color: var(--fg);
+
+    height: 100%;
+
+    transition: width 250ms;
+}

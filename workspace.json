@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "bitburner-scripts": "packages/bitburner-scripts",
+    "ws-stats-server": "packages/ws-stats-server",
+    "ws-stats-viewer": "packages/ws-stats-viewer",
+    "ws-update-server": "packages/ws-update-server"
+  }
 }

@@ -1,0 +1,42 @@
+{
+  "root": "packages/bitburner-scripts",
+  "srcRoot": "packages/bitburner-scripts/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "dist/bitburner-scripts" ],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        },
+        {
+          "target": "pull-defs",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "cwd": "packages/bitburner-scripts",
+        "command": "npx tsc --build"
+      }
+    },
+
+    "watch": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "dist/bitburner-scripts" ],
+      "options": {
+        "cwd": "packages/bitburner-scripts",
+        "command": "npx tsc --watch"
+      }
+    },
+
+    "pull-defs": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "@types/NetscriptDefinitions.d.ts" ],
+      "options": {
+        "cwd": ".",
+        "command": "curl https://raw.githubusercontent.com/danielyxie/bitburner/dev/src/ScriptEditor/NetscriptDefinitions.d.ts -o @types/NetscriptDefinitions.d.ts"
+      }
+    }
+  }
+}

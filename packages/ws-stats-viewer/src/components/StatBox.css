@@ -1,0 +1,37 @@
+.StatBox {
+    background-color: var(--bg);
+
+    min-width: initial;
+
+    padding: 0.25em;
+}
+
+.StatBox > .title {
+    color: var(--fg-bright);
+
+    font-size: 1.5em;
+    font-weight: bold;
+
+    margin-bottom: 0.5em;
+    padding-bottom: 0.1em;
+
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--fg);
+
+    text-align: center;
+}
+
+.StatBox > hr {
+    border: none;
+
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--fg-dim);
+
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
