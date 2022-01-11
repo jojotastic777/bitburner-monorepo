@@ -2,8 +2,10 @@
   "version": 2,
   "projects": {
     "bitburner-scripts": "packages/bitburner-scripts",
+    "prom-metrics-expose": "packages/prom-metrics-expose",
     "ws-stats-server": "packages/ws-stats-server",
     "ws-stats-viewer": "packages/ws-stats-viewer",
-    "ws-update-server": "packages/ws-update-server"
+    "ws-update-server": "packages/ws-update-server",
+    "prom-server-compose": "packages/prom-server-compose"
   }
 }

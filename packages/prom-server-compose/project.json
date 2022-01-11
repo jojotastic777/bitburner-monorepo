@@ -1,0 +1,12 @@
+{
+    "root": "packages/prom-server-compose",
+    "targets": {
+        "compose-up": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "cwd": "packages/prom-server-compose",
+                "command": "docker-compose up"
+            }
+        }
+    }
+}
