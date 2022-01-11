@@ -13,5 +13,5 @@ For further instructions, see the README.md for the particular project you want 
 - [WebSocket Script Update Server](packages/ws-update-server/README.md)
 - [WebSocket Stats Server](packages/ws-stats-server/README.md)
 - [WebSocket Stats Viewer](packages/ws-stats-viewer/README.md)
-- [prom-metrics-expose](packages/prom-metrics-expose/README.md)
-- [prom-server-compose](packages/prom-server-compose/README.md)
+- [Bitburner Prometheus Metrics Exposer](packages/prom-metrics-expose/README.md)
+- [Prometheus Server Compose](packages/prom-server-compose/README.md)
