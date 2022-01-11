@@ -1,8 +1,8 @@
-# [@bitburner-monorepo](/)/[ws-update-server](#)
+# [@bitburner-monorepo](https://github.com/jojotastic777/bitburner-monorepo)/[ws-update-server](#)
 This project contains the server-side of my WebSockets-based automatic script editor.
 
 ## Build Instructions
-0. Make sure that all the usage prerequisites listed in the main repository's [README.md](../..) are fulfilled.
+0. Make sure that all the usage prerequisites listed in the main repository's [README.md](https://github.com/jojotastic777/bitburner-monorepo) are fulfilled.
 1. Run the command `nx run ws-stats-server:build`.
 
 That's it. All the files needed to use this project should now exist in the `dist/ws-stats-server` folder in the base directory of this repository.

@@ -1,8 +1,8 @@
-# [@bitburner-monorepo](/)/[bitburner-scripts](#)
+# [@bitburner-monorepo](https://github.com/jojotastic777/bitburner-monorepo)/[bitburner-scripts](#)
 This project contains all of my bitburner scripts, several of which are needed for other projects in this monorepo.
 
 ## Build Instructions
-0. Make sure that all the usage prerequisites listed in the main repository's [README.md](../..) are fulfilled.
+0. Make sure that all the usage prerequisites listed in the main repository's [README.md](https://github.com/jojotastic777/bitburner-monorepo) are fulfilled.
 1. Run the command `nx run bitburner-scripts:build`.
 
 That's it. All the scripts in this project should now exist in the `dist/bitburner-scripts` folder in the base directory of this repository.
