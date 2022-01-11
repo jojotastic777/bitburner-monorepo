@@ -1,4 +1,4 @@
-# [@bitburner-monorepo](../..)/[ws-stats-server](#)
+# [@bitburner-monorepo](/)/[ws-stats-server](#)
 This project contains the server-side of my external Bitburner GUI, which allows the [ingame connector](../bitburner-scripts) and the [viewer](../ws-stats-viewer) to connect to each other.
 
 ## Build Instructions

@@ -1,4 +1,4 @@
-# [@bitburner-monorepo](../..)/[bitburner-scripts](#)
+# [@bitburner-monorepo](/)/[bitburner-scripts](#)
 This project contains all of my bitburner scripts, several of which are needed for other projects in this monorepo.
 
 ## Build Instructions

@@ -1,4 +1,4 @@
-# [@bitburner-monorepo](../..)/[ws-update-server](#)
+# [@bitburner-monorepo](/)/[ws-update-server](#)
 This project contains the server-side of my WebSockets-based automatic script editor.
 
 ## Build Instructions

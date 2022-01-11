@@ -1,4 +1,4 @@
-# [@bitburner-monorepo](../..)/[prom-metrics-expose](#)
+# [@bitburner-monorepo](/)/[prom-metrics-expose](#)
 A means of exposing in-game Bitburner stats as Prometheus metrics. Relies on the `/bin/svc/promStatsConnector` script from [bitburner-scripts](../bitburner-scripts).
 
 ![An image of the exposed prometheus metrics being used in a grafana dashboard.](docs/demo.png)

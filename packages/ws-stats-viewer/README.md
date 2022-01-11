@@ -1,4 +1,4 @@
-# [@bitburner-monorepo](../..)/[ws-stats-viewer](#)
+# [@bitburner-monorepo](/)/[ws-stats-viewer](#)
 This project contains the viewer-side of my external Bitburner GUI. For now, only shows the in-game stats and a few extras, but should be easy to expand in the future.
 
 ![A screenshot of the viewer in action.](./docs/demo-1.gif)
