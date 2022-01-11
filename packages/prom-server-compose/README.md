@@ -1,5 +1,5 @@
-# [@bitburner-monorepo](../../README.md)/[prom-metrics-expose](#)
-A simple, barebones docker-compose file to host a Prometheus instance. Intended for use with [Bitburner Prometheus Metrics Exposer](../prom-metrics-expose/README.md).
+# [@bitburner-monorepo](../..)/[prom-metrics-expose](#)
+A simple, barebones docker-compose file to host a Prometheus instance. Intended for use with [Bitburner Prometheus Metrics Exposer](../prom-metrics-expose).
 
 ## Usage Instructions
 1. Configure `prometheus/prometheus.yml` to your liking.

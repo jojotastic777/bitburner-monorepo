@@ -9,9 +9,9 @@ Usage Prerequisates:
 For further instructions, see the README.md for the particular project you want to use.
 
 ## Projects
-- [Bitburner Scripts](packages/bitburner-scripts/README.md)
-- [WebSocket Script Update Server](packages/ws-update-server/README.md)
-- [WebSocket Stats Server](packages/ws-stats-server/README.md)
-- [WebSocket Stats Viewer](packages/ws-stats-viewer/README.md)
-- [Bitburner Prometheus Metrics Exposer](packages/prom-metrics-expose/README.md)
-- [Prometheus Server Compose](packages/prom-server-compose/README.md)
+- [Bitburner Scripts](packages/bitburner-scripts)
+- [WebSocket Script Update Server](packages/ws-update-server)
+- [WebSocket Stats Server](packages/ws-stats-server)
+- [WebSocket Stats Viewer](packages/ws-stats-viewer)
+- [Bitburner Prometheus Metrics Exposer](packages/prom-metrics-expose)
+- [Prometheus Server Compose](packages/prom-server-compose)
