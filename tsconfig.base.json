@@ -20,8 +20,8 @@
     "paths": {
       "@global/UpdateMessage": ["@types/UpdateMessage.d.ts"],
       "@global/bitburner": ["@types/NetscriptDefinitions.d.ts"],
-      "@global/statsViewer": ["@types/statsViewer.d.ts"],
-      "@global/promStats": ["@types/promStats.d.ts"]
+      "@global/promStats": ["@types/promStats.d.ts"],
+      "@global/statsViewer": ["@types/statsViewer.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
