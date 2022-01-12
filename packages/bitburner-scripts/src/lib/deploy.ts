@@ -96,6 +96,7 @@ export async function deploy(ns: NS, script: string, threads: number | "MAX", ar
         let pid = await exec(ns, script, host.hostname, th, args)
 
         hostsDeployed.push({ hostname: host.hostname, pid: pid, threads: host.threads })
+        threadsRemaining -= th
     }
 
     return {
