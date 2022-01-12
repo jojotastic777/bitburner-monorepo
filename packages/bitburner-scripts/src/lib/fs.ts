@@ -43,6 +43,20 @@ export function normalizeFoldername(foldername: string): string {
 }
 
 /**
+ * A function which joins two paths together.
+ * @param start The starting path.
+ * @param end The ending path.
+ * @returns A new path which is the starting path followed by the ending path.
+ */
+export function joinPaths(start: string, end: string): string {
+    if (end.startsWith("/")) {
+        end = end.slice(1)
+    }
+
+    return start + end
+}
+
+/**
  * A wrapper for ns.read which does the following:
  * - Processes the filename with normalizeFilename.
  * - Copies the file from the 'home' system, if the script isn't already running there. (Returns an empty string if doing so is impossible.)
