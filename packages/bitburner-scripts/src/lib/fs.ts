@@ -25,6 +25,24 @@ export function normalizeFilename(filename: string): string {
 }
 
 /**
+ * A foldername processor which does the following:
+ * - Adds a leading "/" if one is needed.
+ * - Adds a trailing "/" if one is needed.
+ * 
+ * @param foldername The foldername to be normalized.
+ * @returns A normalized foldername.
+ */
+export function normalizeFoldername(foldername: string): string {
+    // If the foldername doesn't have a leading "/", add one.
+    foldername = foldername[0] !== "/" ? "/" + foldername : foldername
+
+    // If the foldername doesn't have a trailing "/", add one.
+    foldername = !foldername.endsWith("/") ? foldername + "/" : foldername
+
+    return foldername
+}
+
+/**
  * A wrapper for ns.read which does the following:
  * - Processes the filename with normalizeFilename.
  * - Copies the file from the 'home' system, if the script isn't already running there. (Returns an empty string if doing so is impossible.)
