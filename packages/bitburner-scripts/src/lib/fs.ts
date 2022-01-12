@@ -1,28 +1,33 @@
 import { NS } from "@global/bitburner"
 
 /**
- * Removes "dist/bitburner" from the start of the filename.
- * Adds a leading "/" if one is needed.
- * Removes a leading "/" if one isn't needed.
+ * A filename processor which does the following:
+ * - Adds a leading "/" if one is needed.
+ * - Removes a leading "/" if one isn't needed.
+ * - Adds ".txt" to the end of any filename not ending in ".txt", ".js", or ".script"
  * 
  * @param filename The filename to be normalized.
  * @returns A normalized filename.
  */
 export function normalizeFilename(filename: string): string {
-    // Remove the unneeded folder prefix.
-    // filename = filename.replace(/^dist\/bitburner/, "")
-
     // If the filename is lacking a neccesary leading "/", add one.
     filename = filename[0] !== "/" && filename.slice(1).includes("/") ? "/" + filename : filename
 
     // If the filename has an extra leading "/", remove it.
     filename = filename[0] === "/" && !filename.slice(1).includes("/") ? filename.slice(1) : filename
 
+    // If the filename ends in ".txt", ".js", or ".script", add ".txt" to the end.
+    if (!filename.endsWith(".txt") && !filename.endsWith(".js") && !filename.endsWith(".script")) {
+        filename = filename.replace(/(?<=\.)[a-zA-z0-9\-]+$/, "$&.txt")
+    }
+
     return filename
 }
 
 /**
- * A wrapper for ns.read, which normalizes the filename and copies the requested file from "home" before reading.
+ * A wrapper for ns.read which does the following:
+ * - Processes the filename with normalizeFilename.
+ * - Copies the file from the 'home' system, if the script isn't already running there. (Returns an empty string if doing so is impossible.)
  * @param ns A Netscript context.
  * @param filename The name of the file to read.
  * @returns If the file exists, returns its contents. Otherwise, returns an empty string.
@@ -30,31 +35,47 @@ export function normalizeFilename(filename: string): string {
 export async function readFile(ns: NS, filename: string): Promise<string> {
     let normFilename = normalizeFilename(filename)
 
-    await ns.scp(normFilename, "home", ns.getHostname())
+    // Copy the file from 'home' if we aren't running there already.
+    if (ns.getHostname() !== "home") {
+        let scpOk = await ns.scp(normFilename, "home", ns.getHostname())
+
+        if (!scpOk) {
+            return ""
+        }
+    }
+
     return await ns.read(normFilename)
 }
 
 /**
- * A wrapper for ns.write, which normalizes the filename and copies the resulting file to "home" after writing.
- * Additionally, restarts the script using ns.spawn if the currently running script's file was written to.
- * If the script is restarted, sends a toast notification.
+ * A wrapper for ns.write, which does the following:
+ * - Processes the filename with normalizeFilename.
+ * - Copies the newly-written file to the 'home' system if the script isn't already running there.
  * 
  * @param ns A Netscript context.
  * @param filename The name of the file to be written to.
  * @param data The data to write to the file.
+ * @returns Whether or not the file was written successfully.
  */
-export async function writeFile(ns: NS, filename: string, data: string, allowRestart: boolean = false): Promise<void> {
+export async function writeFile(ns: NS, filename: string, data: string): Promise<boolean> {
     let normFilename = normalizeFilename(filename)
 
     await ns.write(normFilename, [data], "w")
-    await ns.scp(normFilename, ns.getHostname(), "home")
-
-    if (normFilename === ns.getScriptName() && allowRestart) {
-        ns.toast(`Updated '${ns.getScriptName()}'. Restarting...`, "info")
-        ns.spawn(ns.getScriptName())
+    
+    if (ns.getHostname() !== "home") {
+        return await ns.scp(normFilename, ns.getHostname(), "home")
     }
+
+    return true
 }
 
+/**
+ * A specialized wrapper for readFile intended for reading configuration.
+ * @param ns A Netscript context.
+ * @param configFilename The filename where the configuration can be found.
+ * @param configDefaults Default configuration values.
+ * @returns Configuration.
+ */
 export async function getConfig<T>(ns: NS, configFilename: string, configDefaults: T): Promise<T> {
     const normFilename = normalizeFilename(configFilename)
 
