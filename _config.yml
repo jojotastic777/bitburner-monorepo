@@ -4,8 +4,3 @@ email: jojotastic777@gmail.com
 theme: jekyll-theme-midnight
 
 github_username: jojotastic777
-
-include: [
-  "packages/prom-metrics-expose/docs/demo.png",
-  "packages/ws-stats-viewer/docs/demo-1.gif"
-]

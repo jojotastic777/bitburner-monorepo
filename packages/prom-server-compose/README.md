@@ -1,4 +1,4 @@
-# [@bitburner-monorepo](https://github.com/jojotastic777/bitburner-monorepo)/[prom-metrics-expose](#)
+# [@bitburner-monorepo](https://jojotastic777.github.io/bitburner-monorepo/)/[prom-metrics-expose](#)
 A simple, barebones docker-compose file to host a Prometheus instance. Intended for use with [Bitburner Prometheus Metrics Exposer](../prom-metrics-expose).
 
 ## Usage Instructions
