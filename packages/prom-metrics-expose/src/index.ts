@@ -1,5 +1,6 @@
 import express, { Request } from "express"
 import { GameState, GameMessage } from "@global/promStats"
+import { Player } from "@global/bitburner"
 
 const formatNumber = (num: number) => {
     return num.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 20 }).replaceAll(",", "")
@@ -22,8 +23,8 @@ app.post("/game", (req: Request<{}, any, GameMessage>, res) => {
 
 app.get("/metrics", (req, res) => {
     let resData =  [
-        `max_hp ${formatNumber(gameState.player?.max_hp ?? 0)}`,
         `hp ${formatNumber(gameState.player?.hp ?? 0)}`,
+        `max_hp ${formatNumber(gameState.player?.max_hp ?? 0)}`,
         `money ${formatNumber(gameState.player?.money ?? 0)}`,
 
         `stat_level{skill="Hack"} ${formatNumber(gameState.player?.hacking ?? 1)}`,
@@ -50,8 +51,29 @@ app.get("/metrics", (req, res) => {
         `stat_exp{skill="Charisma"} ${formatNumber(gameState.player?.charisma_exp ?? 0)}`,
         `stat_mult{skill="Charisma"} ${formatNumber(gameState.player?.charisma_mult ?? 1)}`,
 
-        ...(gameState.servers ?? []).filter(srv => srv.hasAdminRights).map(srv => `server_max_ram{hostname="${srv.hostname}"} ${formatNumber(srv.maxRam)}`),
-        ...(gameState.servers ?? []).filter(srv => srv.hasAdminRights).map(srv => `server_used_ram{hostname="${srv.hostname}"} ${formatNumber(srv.ramUsed)}`)
+        Object.keys(gameState.player ?? {})
+            //@ts-expect-error
+            .filter(key => (typeof (gameState.player?.[key]) === "number"))
+            //@ts-expect-error
+            .map((key: string): string => `player_${key} ${formatNumber(gameState.player?.[key])}`)
+            .join("\n"),
+
+        Object.keys(gameState.player ?? {})
+            //@ts-expect-error
+            .filter(key => (typeof (gameState.player?.[key]) === "boolean"))
+            //@ts-expect-error
+            .map((key: string): string => `player_${key} ${formatNumber(gameState.player?.[key] ? 1 : 0)}`)
+            .join("\n"),
+
+        (gameState.servers ?? [])
+            .filter(srv => srv.hasAdminRights)
+            .map(srv => `server_max_ram{hostname="${srv.hostname}"} ${formatNumber(srv.maxRam)}`)
+            .join("\n"),
+
+        (gameState.servers ?? [])
+            .filter(srv => srv.hasAdminRights)
+            .map(srv => `server_used_ram{hostname="${srv.hostname}"} ${formatNumber(srv.ramUsed)}`)
+            .join("\n")
     ].map(l => "bitburner_" + l).join("\n")
 
     res.status(200).contentType("text/plain").send(resData).end()
