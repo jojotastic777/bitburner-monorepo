@@ -51,29 +51,25 @@ app.get("/metrics", (req, res) => {
         `stat_exp{skill="Charisma"} ${formatNumber(gameState.player?.charisma_exp ?? 0)}`,
         `stat_mult{skill="Charisma"} ${formatNumber(gameState.player?.charisma_mult ?? 1)}`,
 
-        Object.keys(gameState.player ?? {})
+        ...Object.keys(gameState.player ?? {})
             //@ts-expect-error
             .filter(key => (typeof (gameState.player?.[key]) === "number"))
             //@ts-expect-error
-            .map((key: string): string => `player_${key} ${formatNumber(gameState.player?.[key])}`)
-            .join("\n"),
+            .map((key: string): string => `player_${key} ${formatNumber(gameState.player?.[key])}`),
 
-        Object.keys(gameState.player ?? {})
+        ...Object.keys(gameState.player ?? {})
             //@ts-expect-error
             .filter(key => (typeof (gameState.player?.[key]) === "boolean"))
             //@ts-expect-error
-            .map((key: string): string => `player_${key} ${formatNumber(gameState.player?.[key] ? 1 : 0)}`)
-            .join("\n"),
+            .map((key: string): string => `player_${key} ${formatNumber(gameState.player?.[key] ? 1 : 0)}`),
 
-        (gameState.servers ?? [])
+        ...(gameState.servers ?? [])
             .filter(srv => srv.hasAdminRights)
-            .map(srv => `server_max_ram{hostname="${srv.hostname}"} ${formatNumber(srv.maxRam)}`)
-            .join("\n"),
+            .map(srv => `server_max_ram{hostname="${srv.hostname}"} ${formatNumber(srv.maxRam)}`),
 
-        (gameState.servers ?? [])
+        ...(gameState.servers ?? [])
             .filter(srv => srv.hasAdminRights)
             .map(srv => `server_used_ram{hostname="${srv.hostname}"} ${formatNumber(srv.ramUsed)}`)
-            .join("\n")
     ].map(l => "bitburner_" + l).join("\n")
 
     res.status(200).contentType("text/plain").send(resData).end()
