@@ -4,7 +4,7 @@ The Bitburner repository to end all Bitburner repositories. Hopefully. Leverages
 Usage Prerequisates:
 - Make sure that `npx nx` runs the correct Nx cli tool.
   - Alternately, install `nx` globally using `npm install -g nx`
-- Run `npm install --include=dev` in the base directory. This will install all the dependencies for everything in the `packages` folder.
+- Run `yarn install --dev` in the base directory. This will install all the dependencies for everything in the `packages` folder.
 
 For further instructions, see the README.md for the particular project you want to use.
 

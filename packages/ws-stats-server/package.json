@@ -1,5 +1,6 @@
 {
   "name": "@bitburner-monorepo/ws-stats-server",
+  "version": "1.0.0",
   "scripts": {
     "test": "node index.js"
   },
