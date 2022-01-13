@@ -3,15 +3,7 @@
  * @module
  */
 import { NS } from "@global/bitburner";
-
-/**
- * Deduplicate an array by converting it to a Set and back.
- * @param array The array to be de-duplicated.
- * @returns An array lacking any duplicate elements.
- */
-function dedupe<T>(array: T[]): T[] {
-    return [ ...new Set(array) ]
-}
+import { dedupe } from "/lib/utility.js";
 
 /**
  * A function which returns all available hosts.
