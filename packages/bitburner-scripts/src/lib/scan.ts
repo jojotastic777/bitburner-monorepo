@@ -10,7 +10,7 @@ import { dedupe } from "/lib/utility.js";
  * @param ns A Netscript context.
  * @returns A list of all available hosts.
  */
-export function scan(ns: NS, hosts: string[] = []): string[] {
+export function scan(ns: NS, hosts: string[] = [ "home" ]): string[] {
     let newHosts = dedupe([ ...hosts, ...hosts.flatMap(host => ns.scan(host)) ])
 
     return newHosts.length > hosts.length ? scan(ns, newHosts) : hosts
