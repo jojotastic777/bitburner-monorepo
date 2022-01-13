@@ -15,7 +15,8 @@ export type RamState = {
 }
 
 export type ExtendedProcessInfo = ProcessInfo & {
-    host: string
+    host: string,
+    logs: string[]
 }
 
 export type GameState = {

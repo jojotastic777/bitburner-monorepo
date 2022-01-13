@@ -33,7 +33,7 @@ function getGameState(ns: NS): GameState {
                 free:  REMOTE_RAM_FREE
             }
         },
-        processes: HOSTS.flatMap(host => ns.ps(host.hostname).map(proc => ({ host: host.hostname, ...proc })))
+        processes: HOSTS.flatMap(host => ns.ps(host.hostname).map(proc => ({ host: host.hostname, logs: ns.getScriptLogs(proc.filename, host.hostname, ...proc.args), ...proc })))
     }
 }
 
