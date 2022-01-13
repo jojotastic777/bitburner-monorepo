@@ -18,15 +18,8 @@ function dedupe<T>(array: T[]): T[] {
  * @param ns A Netscript context.
  * @returns A list of all available hosts.
  */
-export function scan(ns: NS): string[] {
-    let hosts: string[] = [ "home" ]
-    let oldHostsLen = 0
-    let i = 0;
+export function scan(ns: NS, hosts: string[] = []): string[] {
+    let newHosts = dedupe([ ...hosts, ...hosts.flatMap(host => ns.scan(host)) ])
 
-    while (oldHostsLen < hosts.length && i < 9) {
-        oldHostsLen = hosts.length
-        hosts = dedupe(hosts.flatMap(host => ns.scan(host).concat(hosts)))
-    }
-
-    return hosts
+    return newHosts.length > hosts.length ? scan(ns, newHosts) : hosts
 }
