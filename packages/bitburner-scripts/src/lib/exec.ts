@@ -54,7 +54,6 @@ export async function exec(ns: NS, script: string, targetHost: string, threads: 
             return -7
         }
     }
-
-    debugger;
+    
     return ns.exec(script, targetHost, threads, ...args)
 }
