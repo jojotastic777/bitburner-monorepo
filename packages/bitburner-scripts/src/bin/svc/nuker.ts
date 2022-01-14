@@ -1,7 +1,15 @@
+/**
+ * A Bitburner script which runs NUKE.exe (and other associated programs) on all possible hosts.
+ * @module
+ */
 import { NS } from "@global/bitburner";
 import { nuke } from "../../lib/nuke";
 import { scan } from "../../lib/scan";
 
+/**
+ * The main function, called whenever the script is run.
+ * @param ns A Netscript context.
+ */
 export async function main(ns: NS) {
     while (true) {
         const HOSTS = scan(ns)

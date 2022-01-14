@@ -17,6 +17,11 @@ export function scan(ns: NS, hosts: string[] = [ "home" ]): string[] {
     return newHosts.length > hosts.length ? scan(ns, newHosts) : hosts
 }
 
+/**
+ * Builds an undirected Graph of all hosts in the network.
+ * @param ns A Netscript context.
+ * @returns An undirected Graph of all hosts in the network.
+ */
 export function buildNetGraph(ns: NS): graph.Graph {
     const HOSTS = scan(ns)
 

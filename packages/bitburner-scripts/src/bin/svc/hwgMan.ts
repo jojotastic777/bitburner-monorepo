@@ -22,7 +22,7 @@ type HWGManagerConfiguration = {
  * @param filename The filename to be normalized.
  * @returns A normalized filename.
  */
- function normalizeFilename(filename: string): string {
+function normalizeFilename(filename: string): string {
     // Remove the unneeded folder prefix.
     filename = filename.replace(/^dist\/bitburner/, "")
 
@@ -41,7 +41,7 @@ type HWGManagerConfiguration = {
  * @param filename The name of the file to read.
  * @returns If the file exists, returns its contents. Otherwise, returns an empty string.
  */
- async function readFile(ns: NS, filename: string): Promise<string> {
+async function readFile(ns: NS, filename: string): Promise<string> {
     let normFilename = normalizeFilename(filename)
 
     await ns.scp(normFilename, "home", ns.getHostname())

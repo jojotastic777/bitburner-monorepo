@@ -1,3 +1,7 @@
+/**
+ * A library for working with the filesystem in Bitburner.
+ * @module
+ */
 import { NS } from "@global/bitburner"
 
 /**

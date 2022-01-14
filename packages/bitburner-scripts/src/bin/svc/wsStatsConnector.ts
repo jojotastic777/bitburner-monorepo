@@ -1,3 +1,7 @@
+/**
+ * A Bitburner script which connects the game to the `ws-stats-server` program in this repository.
+ * @module
+ */
 import { NS } from "@global/bitburner";
 import { GameState } from "@global/statsViewer"
 import { getConfig } from "../../lib/fs";
@@ -5,6 +9,11 @@ import { scan } from "../../lib/scan";
 
 const CONFIG_PATH = "/etc/svc/wsStatsConnector/config.txt"
 
+/**
+ * Gets the current GameState.
+ * @param ns A Netscript context.
+ * @returns The current GameState.
+ */
 function getGameState(ns: NS): GameState {
     const HOSTS = scan(ns).map(host => ns.getServer(host))
 
@@ -37,12 +46,19 @@ function getGameState(ns: NS): GameState {
     }
 }
 
+/**
+ * Script configuration schema.
+ */
 export type WsStatsConnectorConfig = {
     serverUrl: string
 }
 
 let open: boolean = false
 
+/**
+ * The main function, called whenever the script is run.
+ * @param ns A Netscript context.
+ */
 export async function main(ns: NS) {
     const config: WsStatsConnectorConfig = await getConfig(ns, CONFIG_PATH, {
         serverUrl: "ws://127.0.0.1:9090/game"

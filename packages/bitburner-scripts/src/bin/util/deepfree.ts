@@ -1,6 +1,14 @@
+/**
+ * A Bitburner script which acts as a replacement for the built-in `free` command.
+ * @module
+ */
 import { NS } from "@global/bitburner";
 import { scan } from "../../lib/scan";
 
+/**
+ * The main function, called whenever the script is run.
+ * @param ns A Netscript context.
+ */
 export async function main(ns: NS) {
     const SERVERS = scan(ns).concat(ns.getPurchasedServers()).map(host => ns.getServer(host))
     const TOTAL_RAM = SERVERS.map(srv => srv.maxRam).reduce((acc, cur) => acc + cur)

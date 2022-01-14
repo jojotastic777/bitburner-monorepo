@@ -1,3 +1,7 @@
+/**
+ * A Bitburner script which manages purchasing and upgrading servers.
+ * @module
+ */
 import { NS } from "@global/bitburner";
 
 // TODO: Add actual configs using the fs library.
@@ -5,6 +9,10 @@ const MIN_SERVER_RAM = 2
 const SERVER_PREFIX = "starforge-"
 const BUDGET_QUOTIENT = 1/100
 
+/**
+ * The main function, called whenever the script is run.
+ * @param ns A Netscript context.
+ */
 export async function main(ns: NS) {
     const MAX_SERVERS = ns.getPurchasedServerLimit()
     const MAX_RAM = ns.getPurchasedServerMaxRam()

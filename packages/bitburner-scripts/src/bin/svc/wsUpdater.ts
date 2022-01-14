@@ -4,7 +4,6 @@
  * Usage: `run /bin/svc/wsUpdater.js`
  * @module
  */
-
 import { NS } from "@global/bitburner";
 import { UpdateMessage } from "@global/UpdateMessage";
 

@@ -1,3 +1,7 @@
+/**
+ * A Bitburner script which manages launching scripts from a set of configuration files.
+ * @module
+ */
 import { NS } from "@global/bitburner";
 import { deploy } from "../../lib/deploy";
 import { exec } from "../../lib/exec";
@@ -5,10 +9,16 @@ import * as fs from "../../lib/fs"
 import { nuke } from "../../lib/nuke";
 import { scan } from "../../lib/scan";
 
+/**
+ * Script configuration schema.
+ */
 type ServicedConfig = {
     serviceDirectory: string
 }
 
+/**
+ * Service configuration file schema.
+ */
 type Service = {
     name: string
     description?: string
@@ -22,6 +32,10 @@ type Service = {
     args: (string | number | boolean)[]
 }
 
+/**
+ * The main function, called whenever the script is run.
+ * @param ns A Netscript context.
+ */
 export async function main(ns: NS) {
     ns.disableLog("ALL")
 
