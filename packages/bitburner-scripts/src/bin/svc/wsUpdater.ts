@@ -132,8 +132,8 @@ export async function main(ns: NS): Promise<void> {
 
     while (true) {
         // Split the message queue into catagories based on each message's type.
-        let added   = messageQueue.filter(msg => msg.type === "add")
-        let changed = messageQueue.filter(msg => msg.type === "change")
+        let added   = messageQueue.filter(msg => msg.type === "add" && (msg.content?.length ?? 0) > 0)
+        let changed = messageQueue.filter(msg => msg.type === "change" && (msg.content?.length ?? 0) > 0)
         let removed = messageQueue.filter(msg => msg.type === "remove")
 
         // Empty the message queue.
@@ -156,7 +156,8 @@ export async function main(ns: NS): Promise<void> {
 
             for (let msg of changed) {
                 if (msg.content !== undefined && msg.content.length > 0) {
-                    await writeFile(ns, msg.path, msg.content ?? "")
+                    
+                    await writeFile(ns, msg.path, msg.content ?? "", true)
                 }
             }
         }
