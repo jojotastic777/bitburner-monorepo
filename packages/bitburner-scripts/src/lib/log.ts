@@ -5,7 +5,7 @@ export type LogLevel = "none" | "debug" | "info" | "warning" | "error"
 
 export default R.curry((ns: NS, scriptName: string, logLevel: LogLevel) => ({
     debug: (message: string): void => {
-        let logString = `[${scriptName}] [${logLevel.toUpperCase()}]: ${message}`
+        let logString = `[${scriptName}] [DEBUG]: ${message}`
 
         if ([ "debug" ].includes(logLevel)) {
             ns.tprintf(logString)
@@ -15,7 +15,7 @@ export default R.curry((ns: NS, scriptName: string, logLevel: LogLevel) => ({
     },
 
     info: (message: string): void => {
-        let logString = `[${scriptName}] [${logLevel.toUpperCase()}]: ${message}`
+        let logString = `[${scriptName}] [INFO]: ${message}`
 
         if ([ "debug", "info" ].includes(logLevel)) {
             ns.tprintf(logString)
@@ -25,7 +25,7 @@ export default R.curry((ns: NS, scriptName: string, logLevel: LogLevel) => ({
     },
 
     warning: (message: string): void => {
-        let logString = `[${scriptName}] [${logLevel.toUpperCase()}]: ${message}`
+        let logString = `[${scriptName}] [WARN]: ${message}`
 
         if ([ "debug", "info", "warning" ].includes(logLevel)) {
             ns.tprintf(logString)
@@ -35,7 +35,7 @@ export default R.curry((ns: NS, scriptName: string, logLevel: LogLevel) => ({
     },
 
     error: (message: string): void => {
-        let logString = `[${scriptName}] [${logLevel.toUpperCase()}]: ${message}`
+        let logString = `[${scriptName}] [ERROR]: ${message}`
 
         if ([ "debug", "info", "warning", "error" ].includes(logLevel)) {
             ns.tprintf(logString)
