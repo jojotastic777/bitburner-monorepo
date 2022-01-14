@@ -130,8 +130,6 @@ export async function main(ns: NS): Promise<void> {
         // Parse the recieved message, assuming it's an UpdateMessage.
         let message: UpdateMessage = JSON.parse(ev.data.toString())
 
-        ns.tprint(`${message.path} ${message.type} ${message.content?.length ?? ""}`)
-
         // Add the message to the message queue.
         messageQueue.push(message)
     }
