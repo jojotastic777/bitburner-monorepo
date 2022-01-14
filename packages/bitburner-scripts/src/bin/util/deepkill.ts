@@ -22,7 +22,7 @@ export async function main(ns: NS): Promise<void> {
 
     PROCESSES.forEach(proc => {
         ns.kill(proc.pid)
-        logger.error(`Killed process ${proc.filename}[${proc.args?.map(arg => JSON.stringify(arg)).join(", ")}]@${proc.host} (PID - ${proc.pid})`)
+        logger.info(`Killed process ${proc.filename}[${proc.args?.map(arg => JSON.stringify(arg)).join(", ")}]@${proc.host} (PID - ${proc.pid})`)
     })
 
     logger.info(`Killed ${PROCESSES.length} processes.`)
