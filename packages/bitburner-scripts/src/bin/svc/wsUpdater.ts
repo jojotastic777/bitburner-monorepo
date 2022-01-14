@@ -144,7 +144,9 @@ export async function main(ns: NS): Promise<void> {
             ns.toast(`Added ${added.length} files.`, "success")
 
             for (let msg of added) {
-                await writeFile(ns, msg.path, msg.content ?? "")
+                if (msg.content !== undefined && msg.content.length > 0) {
+                    await writeFile(ns, msg.path, msg.content ?? "")
+                }
             }
         }
 
@@ -153,7 +155,9 @@ export async function main(ns: NS): Promise<void> {
             ns.toast(`Changed ${changed.length} files.`, "success")
 
             for (let msg of changed) {
-                await writeFile(ns, msg.path, msg.content ?? "", true)
+                if (msg.content !== undefined && msg.content.length > 0) {
+                    await writeFile(ns, msg.path, msg.content ?? "")
+                }
             }
         }
 
