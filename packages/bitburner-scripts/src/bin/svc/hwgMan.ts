@@ -8,6 +8,7 @@
 import { NS } from "@global/bitburner";
 import { deploy } from "../../lib/deploy";
 import { readFile } from "../../lib/fs";
+import log from "../../lib/log"
 
 const CONFIG_PATH = "/etc/svc/hwgMan/config.txt"
 
@@ -20,6 +21,9 @@ type HWGManagerConfiguration = {
  * @param ns A Netscript context.
  */
 export async function main(ns: NS): Promise<void> {
+    ns.disableLog("ALL")
+    const logger = log(ns, "hwgMan", "none")
+
     while(true) {
         let configString: string = await readFile(ns, CONFIG_PATH)
 
@@ -30,7 +34,7 @@ export async function main(ns: NS): Promise<void> {
         try {
             config = { ...config, ...JSON.parse(configString) }
         } catch (e) {
-            ns.print(`Couldn't read configuration file at ${CONFIG_PATH}, using default configuration.`)
+            logger.warning(`Couldn't read configuration file at ${CONFIG_PATH}, using default configuration.`)
         }
 
         if (ns.getServerSecurityLevel(config.hackTarget) > ns.getServerMinSecurityLevel(config.hackTarget)) {
@@ -38,6 +42,7 @@ export async function main(ns: NS): Promise<void> {
 
             await deploy(ns, "/bin/simple/weaken.js", "MAX", [config.hackTarget])
 
+            logger.info(`Weakening host '${config.hackTarget} for ${((weakenTime + 100) * 1000).toFixed(2)}s'`)
             await ns.sleep(weakenTime + 100)
             continue
         } else if (ns.getServerMoneyAvailable(config.hackTarget) < ns.getServerMaxMoney(config.hackTarget)) {
@@ -45,6 +50,7 @@ export async function main(ns: NS): Promise<void> {
 
             await deploy(ns, "/bin/simple/grow.js", "MAX", [config.hackTarget])
 
+            logger.info(`Growing host '${config.hackTarget} for ${((growtime + 100) * 1000).toFixed(2)}s'`)
             await ns.sleep(growtime + 100)
             continue
         } else {
@@ -52,6 +58,7 @@ export async function main(ns: NS): Promise<void> {
 
             await deploy(ns, "/bin/simple/hack.js", "MAX", [config.hackTarget])
 
+            logger.info(`Hacking host '${config.hackTarget} for ${((hackTime + 100) * 1000).toFixed(2)}s'`)
             await ns.sleep(hackTime + 100)
             continue
         }
