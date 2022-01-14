@@ -1,9 +1,9 @@
 import { NS } from "@global/bitburner";
-import { deploy } from "/lib/deploy.js";
-import { exec } from "/lib/exec.js";
-import * as fs from "/lib/fs.js"
-import { nuke } from "/lib/nuke.js";
-import { scan } from "/lib/scan.js";
+import { deploy } from "../../lib/deploy";
+import { exec } from "../../lib/exec";
+import * as fs from "../../lib/fs"
+import { nuke } from "../../lib/nuke";
+import { scan } from "../../lib/scan";
 
 type ServicedConfig = {
     serviceDirectory: string

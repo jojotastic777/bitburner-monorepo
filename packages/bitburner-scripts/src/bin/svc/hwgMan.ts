@@ -6,7 +6,7 @@
  */
 
 import { NS } from "@global/bitburner";
-import { deploy } from "/lib/deploy.js";
+import { deploy } from "../../lib/deploy";
 
 const CONFIG_PATH = "/etc/svc/hwgMan/config.txt"
 

@@ -1,12 +1,12 @@
 import { NS } from "@global/bitburner";
-import { findPath } from "/lib/graph.js";
-import { buildNetGraph } from "/lib/scan.js";
+import { findPath } from "../../lib/graph";
+import { buildNetGraph } from "../../lib/scan";
 
 export function autocomplete(data: any) {
     return [...data.servers]
 }
 
-const doc: Document = eval("document")
+const doc = globalThis["document"]
 
 function runTerminalCommand(command: string): void {
     const termInput: HTMLInputElement = doc.getElementById("terminal-input")! as HTMLInputElement

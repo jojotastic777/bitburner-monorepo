@@ -3,8 +3,8 @@
  * @module
  */
 import { NS } from "@global/bitburner";
-import { dedupe } from "/lib/utility.js";
-import * as graph from "/lib/graph.js"
+import { dedupe } from "./utility";
+import * as graph from "./graph"
 
 /**
  * A function which returns all available hosts.

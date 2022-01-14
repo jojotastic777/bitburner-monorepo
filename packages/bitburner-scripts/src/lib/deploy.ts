@@ -3,8 +3,8 @@
  * @module
  */
 import { NS } from "@global/bitburner";
-import { exec } from "/lib/exec.js";
-import { scan } from "/lib/scan.js";
+import { exec } from "./exec";
+import { scan } from "./scan";
 
 /**
  * Represents the various options which can be passed to `deploy`.

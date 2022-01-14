@@ -1,7 +1,7 @@
 import { NS } from "@global/bitburner";
 import { GameState } from "@global/statsViewer"
-import { getConfig } from "/lib/fs.js";
-import { scan } from "/lib/scan.js";
+import { getConfig } from "../../lib/fs";
+import { scan } from "../../lib/scan";
 
 const CONFIG_PATH = "/etc/svc/wsStatsConnector/config.txt"
 

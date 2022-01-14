@@ -5,7 +5,7 @@
  * @module
  */
 import { NS } from "@global/bitburner";
-import { scan } from "/lib/scan.js";
+import { scan } from "../../lib/scan";
 
 /**
  * The main function, called whenever the script is run.

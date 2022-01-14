@@ -17,6 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "outDir": "dist",
+    "allowJs": true,
     "paths": {
       "@global/UpdateMessage": ["@types/UpdateMessage.d.ts"],
       "@global/bitburner": ["@types/NetscriptDefinitions.d.ts"],

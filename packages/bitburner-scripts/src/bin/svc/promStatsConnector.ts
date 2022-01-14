@@ -1,6 +1,6 @@
 import { NS } from "@global/bitburner";
 import { GameMessage } from "@global/promStats"
-import { scan } from "/lib/scan.js";
+import { scan } from "../../lib/scan";
 
 async function sendPlayerState(ns: NS) {
     let message: GameMessage = {

@@ -17,7 +17,7 @@
       ],
       "options": {
         "cwd": "packages/bitburner-scripts",
-        "command": "npx tsc --build"
+        "command": "npx rollup -c rollup.config.ts --configPlugin typescript"
       }
     },
 
@@ -26,7 +26,7 @@
       "outputs": [ "dist/bitburner-scripts" ],
       "options": {
         "cwd": "packages/bitburner-scripts",
-        "command": "npx tsc --watch"
+        "command": "npx rollup -c rollup.config.ts --configPlugin typescript -w"
       }
     },
 

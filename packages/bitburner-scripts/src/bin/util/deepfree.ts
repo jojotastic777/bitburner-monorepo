@@ -1,5 +1,5 @@
 import { NS } from "@global/bitburner";
-import { scan } from "/lib/scan.js";
+import { scan } from "../../lib/scan";
 
 export async function main(ns: NS) {
     const SERVERS = scan(ns).concat(ns.getPurchasedServers()).map(host => ns.getServer(host))

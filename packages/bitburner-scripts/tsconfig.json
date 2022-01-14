@@ -2,15 +2,11 @@
     "extends": "../../tsconfig.base.json",
 
     "compilerOptions": {
-        "rootDir": "src",
-        "outDir": "../../dist/bitburner-scripts",
+        "rootDir": ".",
 
         "sourceMap": false,
 
         "paths": {
-            "/*.js": [ "packages/bitburner-scripts/src/*" ],
-            "*.js": [ "packages/bitburner-scripts/src/*" ],
-
             "@global/bitburner": [ "@types/NetscriptDefinitions.d.ts" ],
             "@global/UpdateMessage": [ "@types/UpdateMessage.d.ts" ],
             "@global/statsViewer": ["@types/statsViewer.d.ts"],

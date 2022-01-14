@@ -6,8 +6,8 @@
  */
 
 import { NS } from "@global/bitburner";
-import { nuke } from "/lib/nuke.js";
-import { scan } from "/lib/scan.js";
+import { nuke } from "../../lib/nuke";
+import { scan } from "../../lib/scan";
 
 /**
  * The main function, called whenever the script is run.
