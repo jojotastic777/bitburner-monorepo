@@ -6,6 +6,7 @@
  */
 import { NS } from "@global/bitburner";
 import { UpdateMessage } from "@global/UpdateMessage";
+import log from "../../lib/log"
 
 const CONFIG_PATH: string = "/etc/svc/wsUpdater/config.txt"
 
@@ -83,6 +84,9 @@ export async function main(ns: NS): Promise<void> {
     // Disable extranious logging.
     ns.disableLog("ALL")
 
+    // Set up logger.
+    const logger = log(ns, "wsUpdater", "none")
+
     // Read the configuration file, if it exists.
     let configString: string = await readFile(ns, CONFIG_PATH)
 
@@ -95,7 +99,7 @@ export async function main(ns: NS): Promise<void> {
         // Override default configuration with values from read config file.
         config = { ...config, ...JSON.parse(configString) }
     } catch (e) {
-        ns.print(`Couldn't read configuration file at ${CONFIG_PATH}, using default configuration.`)
+        logger.warning(`Couldn't read configuration file at ${CONFIG_PATH}, using default configuration.`)
     }
 
     // Open a connection to the update server.
