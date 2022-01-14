@@ -3,7 +3,7 @@
  * @module
  */
 import { NS } from "@global/bitburner";
-import { dedupe } from "./utility";
+import * as R from "ramda"
 import * as graph from "./graph"
 
 /**
@@ -12,7 +12,7 @@ import * as graph from "./graph"
  * @returns A list of all available hosts.
  */
 export function scan(ns: NS, hosts: string[] = [ "home" ]): string[] {
-    let newHosts = dedupe([ ...hosts, ...hosts.flatMap(host => ns.scan(host)) ])
+    let newHosts = R.uniq([ ...hosts, ...hosts.flatMap(host => ns.scan(host)) ])
 
     return newHosts.length > hosts.length ? scan(ns, newHosts) : hosts
 }
