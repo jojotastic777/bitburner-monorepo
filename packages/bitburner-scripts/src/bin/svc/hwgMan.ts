@@ -42,7 +42,7 @@ export async function main(ns: NS): Promise<void> {
 
             await deploy(ns, "/bin/simple/weaken.js", "MAX", [config.hackTarget])
 
-            logger.info(`Weakening host '${config.hackTarget} for ${((weakenTime + 100) * 1000).toFixed(2)}s'`)
+            logger.info(`Weakening host '${config.hackTarget} for ${ns.tFormat(weakenTime)}.`)
             await ns.sleep(weakenTime + 100)
             continue
         } else if (ns.getServerMoneyAvailable(config.hackTarget) < ns.getServerMaxMoney(config.hackTarget)) {
@@ -50,7 +50,7 @@ export async function main(ns: NS): Promise<void> {
 
             await deploy(ns, "/bin/simple/grow.js", "MAX", [config.hackTarget])
 
-            logger.info(`Growing host '${config.hackTarget} for ${((growtime + 100) * 1000).toFixed(2)}s'`)
+            logger.info(`Growing host '${config.hackTarget} for ${ns.tFormat(growtime)}.`)
             await ns.sleep(growtime + 100)
             continue
         } else {
@@ -58,7 +58,7 @@ export async function main(ns: NS): Promise<void> {
 
             await deploy(ns, "/bin/simple/hack.js", "MAX", [config.hackTarget])
 
-            logger.info(`Hacking host '${config.hackTarget} for ${((hackTime + 100) * 1000).toFixed(2)}s'`)
+            logger.info(`Hacking host '${config.hackTarget} for ${ns.tFormat(hackTime)}.`)
             await ns.sleep(hackTime + 100)
             continue
         }
