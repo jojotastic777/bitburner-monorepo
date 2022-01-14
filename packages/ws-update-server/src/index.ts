@@ -20,8 +20,12 @@ wss.on("connection", (ws, req) => {
     console.log(`Connection from '${req.socket.remoteAddress}'.`)
 
     // When a file event happened, send a relevant UpdateMessage.
-    let addFile    = (path: string) => ws.send(JSON.stringify({ type: "add",    path, content: fs.readFileSync(path).toString() } as UpdateMessage))
-    let changeFile = (path: string) => ws.send(JSON.stringify({ type: "change", path, content: fs.readFileSync(path).toString() } as UpdateMessage))
+    let addFile    = (path: string) => {
+        setTimeout(() => ws.send(JSON.stringify({ type: "add",    path, content: fs.readFileSync(path).toString() } as UpdateMessage)), 500)
+    }
+    let changeFile = (path: string) => {
+        setTimeout(() => ws.send(JSON.stringify({ type: "change", path, content: fs.readFileSync(path).toString() } as UpdateMessage)), 500)
+    }
     let removeFile = (path: string) => ws.send(JSON.stringify({ type: "remove", path                                            } as UpdateMessage))
 
     // Set up the file watcher.
