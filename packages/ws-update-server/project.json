@@ -13,7 +13,7 @@
       ],
       "options": {
         "cwd": "packages/ws-update-server",
-        "command": "npx tsc --build"
+        "command": "yarn tsc --build"
       }
     },
 

@@ -2,7 +2,7 @@
 The Bitburner repository to end all Bitburner repositories. Hopefully. Leverages some small fraction of the [Nx](https://nx.dev/) build system to keep everything in one place.
 
 Usage Prerequisates:
-- Make sure that `npx nx` runs the correct Nx cli tool.
+- Make sure that `yarn nx` runs the correct Nx cli tool.
   - Alternately, install `nx` globally using `npm install -g nx`
 - Run `yarn install --dev` in the base directory. This will install all the dependencies for everything in the `packages` folder.
 

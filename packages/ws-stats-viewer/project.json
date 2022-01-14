@@ -13,14 +13,14 @@
       ],
       "options": {
         "cwd": "packages/ws-stats-viewer",
-        "command": "npx webpack --config webpack.config.js"
+        "command": "yarn webpack --config webpack.config.js"
       },
       "configurations": {
         "development": {
-          "command": "npx webpack --config webpack.development.js"
+          "command": "tarn webpack --config webpack.development.js"
         },
         "production": {
-          "command": "npx webpack --config webpack.production.js"
+          "command": "yarn webpack --config webpack.production.js"
         }
       }
     },
@@ -36,7 +36,7 @@
       ],
       "options": {
         "cwd": "packages/ws-stats-viewer",
-        "command": "npx webpack serve --config webpack.development.js"
+        "command": "yarn webpack serve --config webpack.development.js"
       }
     }
   }

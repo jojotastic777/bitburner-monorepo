@@ -13,7 +13,7 @@
       ],
       "options": {
         "cwd": "packages/prom-metrics-expose",
-        "command": "npx tsc --build"
+        "command": "yarn tsc --build"
       }
     },
 
