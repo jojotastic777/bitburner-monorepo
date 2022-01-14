@@ -21,9 +21,11 @@ wss.on("connection", (ws, req) => {
 
     // When a file event happened, send a relevant UpdateMessage.
     let addFile    = (path: string) => {
+        // Delay is needed because Rollup is being a shithead.
         setTimeout(() => ws.send(JSON.stringify({ type: "add",    path, content: fs.readFileSync(path).toString() } as UpdateMessage)), 500)
     }
     let changeFile = (path: string) => {
+        // Delay is needed because Rollup is being a shithead.
         setTimeout(() => ws.send(JSON.stringify({ type: "change", path, content: fs.readFileSync(path).toString() } as UpdateMessage)), 500)
     }
     let removeFile = (path: string) => ws.send(JSON.stringify({ type: "remove", path                                            } as UpdateMessage))
