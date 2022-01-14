@@ -2,15 +2,6 @@
     "extends": "../../tsconfig.base.json",
 
     "compilerOptions": {
-        "rootDir": ".",
-
-        "sourceMap": false,
-
-        "paths": {
-            "@global/bitburner": [ "@types/NetscriptDefinitions.d.ts" ],
-            "@global/UpdateMessage": [ "@types/UpdateMessage.d.ts" ],
-            "@global/statsViewer": ["@types/statsViewer.d.ts"],
-            "@global/promStats": ["@types/promStats.d.ts"]
-        }
+        "sourceMap": false
     }
 }
