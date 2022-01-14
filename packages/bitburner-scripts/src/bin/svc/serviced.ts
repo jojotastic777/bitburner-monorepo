@@ -8,6 +8,7 @@ import { exec } from "../../lib/exec";
 import * as fs from "../../lib/fs"
 import { nuke } from "../../lib/nuke";
 import { scan } from "../../lib/scan";
+import log from "../../lib/log"
 
 /**
  * Script configuration schema.
@@ -39,6 +40,8 @@ type Service = {
 export async function main(ns: NS) {
     ns.disableLog("ALL")
 
+    const logger = log(ns, "serviced", "info")
+
     const CONFIG = await fs.getConfig<ServicedConfig>(ns, "/etc/serviced/config.json", {
         serviceDirectory: "/etc/serviced/services/"
     })
@@ -48,7 +51,7 @@ export async function main(ns: NS) {
         .filter(file => file.endsWith(".service.txt"))
 
     if (SERVICE_FILE_NAMES.length === 0) {
-        ns.tprint(`There are no services to deploy.`)
+        logger.info(`There are no services to deploy.`)
         ns.exit()
     }
 
@@ -62,10 +65,10 @@ export async function main(ns: NS) {
 
         try {
             let service: Service = JSON.parse(fileRaw)
-            ns.tprint(`Loaded service '${service.name}' @ '${filename}'.`)
+            logger.info(`Loaded service '${service.name}' @ '${filename}'.`)
             services.push(service)
         } catch (e) {
-            ns.tprint(`Bad service file @ '${filename}'.`)
+            logger.error(`Bad service file @ '${filename}'.`)
         }
     }
 
@@ -75,7 +78,7 @@ export async function main(ns: NS) {
         for (let dependency of service.dependencies ?? []) {
             let dep = fs.normalizeFilename(dependency)
             if (!ns.fileExists(dep, "home")) {
-                ns.tprint(`Failed to deploy service '${service.name}': Bad Dependency: '${dep}'`)
+                logger.error(`Failed to deploy service '${service.name}': Bad Dependency: '${dep}'`)
                 broke = true
                 break
             }
@@ -84,7 +87,7 @@ export async function main(ns: NS) {
                 let scpOk = await ns.scp(dep, "home", host)
 
                 if (!scpOk) {
-                    ns.tprint(`Failed to deploy service '${service.name}': File Transfer Failure`)
+                    logger.error(`Failed to deploy service '${service.name}': File Transfer Failure`)
                     broke = true
                     break
                 }
@@ -101,43 +104,43 @@ export async function main(ns: NS) {
 
         if (service.hostname !== undefined) {
             if (service.threads === "MAX") {
-                ns.tprint(`Failed to deploy service '${service.name}': Bad Thread Count`)
+                logger.error(`Failed to deploy service '${service.name}': Bad Thread Count`)
                 continue
             }
 
             let execStatus = await exec(ns, service.filename, service.hostname, service.threads, service.args)
 
             if (execStatus === -1) {
-                ns.tprint(`Failed to deploy service '${service.name}': Bad Filename`)
+                logger.error(`Failed to deploy service '${service.name}': Bad Filename`)
                 continue
             }
 
             if (execStatus === -2) {
-                ns.tprint(`Failed to deploy service '${service.name}': Bad Host`)
+                logger.error(`Failed to deploy service '${service.name}': Bad Host`)
                 continue
             }
 
             if (execStatus === -3 || execStatus === -5) {
-                ns.tprint(`Failed to deploy service '${service.name}': Bad Thread Count`)
+                logger.error(`Failed to deploy service '${service.name}': Bad Thread Count`)
                 continue
             }
 
             if (execStatus === -4) {
-                ns.tprint(`Failed to deploy service '${service.name}': Insufficient Ram`)
+                logger.error(`Failed to deploy service '${service.name}': Insufficient Ram`)
                 continue
             }
 
             if (execStatus === -6) {
-                ns.tprint(`Failed to deploy service '${service.name}': Service Already Running`)
+                logger.error(`Failed to deploy service '${service.name}': Service Already Running`)
                 continue
             }
 
             if (execStatus === -7) {
-                ns.tprint(`Failed to deploy service '${service.name}': File Transfer Failure`)
+                logger.error(`Failed to deploy service '${service.name}': File Transfer Failure`)
                 continue
             }
 
-            ns.tprint(`Successfully deployed service '${service.name}' on host '${service.hostname}'`)
+            logger.info(`Successfully deployed service '${service.name}' on host '${service.hostname}'`)
             success++
         } else {
             let deployStatus = await deploy(ns, service.filename, service.threads, service.args, {
@@ -146,15 +149,15 @@ export async function main(ns: NS) {
             let hosts = deployStatus.hosts.filter(host => host.pid > 0)
 
             if (hosts.length === 0) {
-                ns.tprint(`Failed to deploy service '${service.name}': No Hosts Available`)
+                logger.error(`Failed to deploy service '${service.name}': No Hosts Available`)
                 continue
             }
 
-            ns.tprint(`Successfully deployed service '${service.name}' on ${hosts.length} hosts: ${hosts.map(host => host.hostname).join(", ")}`)
+            logger.info(`Successfully deployed service '${service.name}' on ${hosts.length} hosts: ${hosts.map(host => host.hostname).join(", ")}`)
             success++
         }
     }
 
-    ns.tprint(`Successfully deployed ${success} of ${SERVICE_FILE_NAMES.length} services.`)
-    ns.tprint(`Exiting.`)
+    logger.info(`Successfully deployed ${success} of ${SERVICE_FILE_NAMES.length} services.`)
+    logger.debug(`Exiting.`)
 }

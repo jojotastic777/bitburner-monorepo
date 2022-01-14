@@ -5,6 +5,7 @@
 import { NS } from "@global/bitburner";
 import { findPath } from "../../lib/graph";
 import { buildNetGraph } from "../../lib/scan";
+import log from "../../lib/log"
 
 /**
  * The function required to allow Bitburner to have correct autocompletes. Basically black magic.
@@ -35,16 +36,19 @@ function runTerminalCommand(command: string): void {
  * @param ns A Netscript context.
  */
 export async function main(ns: NS) {
+    ns.disableLog("ALL")
+    const logger = log(ns, "connect", "info")
+
     let target = ns.args[0] as string | undefined
 
     if (target === undefined) {
-        ns.tprintf("Please specify a host to connect to.")
+        logger.warning("Please specify a host to connect to.")
         ns.exit()
         return
     }
 
     if (!ns.serverExists(target)) {
-        ns.tprintf(`Host '${target}' does not exist.`)
+        logger.error(`Host '${target}' does not exist.`)
         ns.exit()
         return
     }
@@ -52,8 +56,8 @@ export async function main(ns: NS) {
     let netGraph = buildNetGraph(ns)
     let path = findPath(netGraph, ns.getHostname(), target)
 
-    ns.tprintf(`Found Path: ${path.join(" -> ")}`)
-    ns.tprintf(`Executing...`)
+    logger.info(`Found Path: ${path.join(" -> ")}`)
+    logger.info(`Executing...`)
 
     runTerminalCommand(path.slice(1).map(host => `connect ${host}`).join(";"))
 }
