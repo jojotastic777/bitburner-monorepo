@@ -1,0 +1,40 @@
+{
+  "root": "packages/bitburner-scripts-2",
+  "sourceRoot": "packages/bitburner-scripts-2/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "dist/bitburner-scripts-2" ],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        },
+        {
+          "target": "pull-defs",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "cwd": "packages/bitburner-scripts-2",
+        "command": "yarn rollup -c rollup.config.ts --configPlugin typescript"
+      }
+    },
+    "watch": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "dist/bitburner-scripts-2" ],
+      "options": {
+        "cwd": "packages/bitburner-scripts-2",
+        "command": "yarn rollup -c rollup.config.ts --configPlugin typescript -w"
+      }
+    },
+    "pull-defs": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "@types/NetscriptDefinitions.d.ts" ],
+      "options": {
+        "cwd": ".",
+        "command": "curl https://raw.githubusercontent.com/danielyxie/bitburner/dev/src/ScriptEditor/NetscriptDefinitions.d.ts -o @types/NetscriptDefinitions.d.ts"
+      }
+    }
+  }
+}
