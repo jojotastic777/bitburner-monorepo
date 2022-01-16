@@ -35,6 +35,14 @@
         "cwd": ".",
         "command": "curl https://raw.githubusercontent.com/danielyxie/bitburner/dev/src/ScriptEditor/NetscriptDefinitions.d.ts -o @types/NetscriptDefinitions.d.ts"
       }
+    },
+    "lint": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [ "@types/NetscriptDefinitions.d.ts" ],
+      "options": {
+        "cwd": "packages/bitburner-scripts-2",
+        "command": "yarn eslint --fix ."
+      }
     }
   }
 }
