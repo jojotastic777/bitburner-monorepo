@@ -1,0 +1,13 @@
+{
+  "exclude": ["templates/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "paths": {
+      "@global/bitburner": ["@types/NetscriptDefinitions.d.ts"]
+    }
+  }
+}
