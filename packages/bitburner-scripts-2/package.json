@@ -6,6 +6,9 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/glob": "^7.2.0",
     "@types/ramda": "^0.27.63",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^8.7.0",
     "glob": "^7.2.0",
     "rollup": "^2.63.0",
     "tslib": "^2.3.1"

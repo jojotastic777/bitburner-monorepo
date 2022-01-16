@@ -2,7 +2,7 @@ import { NS } from "@global/bitburner"
 import * as R from "ramda"
 
 export const normalizeFilename = (filename: string): string => {
-    // If the filename is lacking a neccesary leading "/", add one.
+    // If the filename is lacking a necessary leading "/", add one.
     filename = filename[0] !== "/" && filename.slice(1).includes("/") ? "/" + filename : filename
 
     // If the filename has an extra leading "/", remove it.
@@ -10,7 +10,7 @@ export const normalizeFilename = (filename: string): string => {
 
     // If the filename doesn't end in ".txt", ".js", or ".script", add ".txt" to the end.
     if (!filename.endsWith(".txt") && !filename.endsWith(".js") && !filename.endsWith(".script")) {
-        filename = filename.replace(/(?<=\.)[a-zA-z0-9\-]+$/, "$&.txt")
+        filename = filename.replace(/(?<=\.)[a-zA-z0-9-]+$/, "$&.txt")
     }
 
     return filename

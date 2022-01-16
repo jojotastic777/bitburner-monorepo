@@ -9,10 +9,10 @@ type UpdateConfig = {
     serverUrl: string
 }
 
-let currentManifest: Manifest = {}
+const currentManifest: Manifest = {}
 
 const fetchManifest = async (log: Logger, url: string): Promise<Manifest> => {
-    const response = await fetch(url).catch(error => log.error(`Failed to retrieve manifest from '${url}'.`))
+    const response = await fetch(url).catch(() => log.error(`Failed to retrieve manifest from '${url}'.`))
 
     let manifest: Manifest = currentManifest
     try {
@@ -25,7 +25,7 @@ const fetchManifest = async (log: Logger, url: string): Promise<Manifest> => {
 }
 
 const normalizeManifest = (manifest: Manifest): Manifest => {
-    let newManifest: Manifest = {}
+    const newManifest: Manifest = {}
 
     Object.keys(manifest).forEach(filename => newManifest[fs.normalizeFilename(filename)] = manifest[filename])
 
@@ -44,8 +44,8 @@ export async function main(ns: NS) {
     while (true) {
         const newManifest = normalizeManifest(await fetchManifest(log, config.serverUrl))
 
-        for (let filename of Object.keys(newManifest)) {
-            let content = newManifest[filename]
+        for (const filename of Object.keys(newManifest)) {
+            const content = newManifest[filename]
 
             if (currentManifest[filename] === undefined) {
                 currentManifest[filename] = content
@@ -85,7 +85,7 @@ export async function main(ns: NS) {
         }
 
         const removedFiles = Object.keys(currentManifest).filter(f => !Object.keys(newManifest).includes(f))
-        for (let filename of removedFiles) {
+        for (const filename of removedFiles) {
             delete currentManifest[filename]
             await fs.removeFile(ns, filename)
 
