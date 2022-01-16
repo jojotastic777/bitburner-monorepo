@@ -1,9 +1,0 @@
-.BarIndicator {
-    grid-template-rows: auto auto;
-    row-gap: 0.25em;
-}
-
-.BarIndicator > .ProgressBar {
-    grid-row: 2;
-    grid-column: 1 / span 2;
-}
