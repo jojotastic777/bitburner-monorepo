@@ -21,7 +21,7 @@ function processFile(filename: string) {
 // Copy script template.
 fs.cpSync("templates/app", APP_DIR, { recursive: true });
 
-["package.json"].forEach((file) => processFile(file));
+["package.json", "rollup.config.js", "README.md"].forEach((file) => processFile(file));
 
 const baseTsConfig = JSON.parse(
   fs.readFileSync("tsconfig.base.json").toString()

@@ -5,7 +5,7 @@ const mainPackageJson = JSON.parse(fs.readFileSync("package.json").toString());
 
 const LIB_SHORT_NAME = process.argv[2];
 const LIB_NAME = `@${mainPackageJson.name}/${LIB_SHORT_NAME}`;
-const LIB_DIR = `libraries/${LIB_SHORT_NAME}`;
+const LIB_DIR = `libs/${LIB_SHORT_NAME}`;
 
 function processFile(filename: string) {
   const path = `${LIB_DIR}/${filename}`;
