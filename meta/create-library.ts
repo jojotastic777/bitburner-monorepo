@@ -19,7 +19,7 @@ function processFile(filename: string) {
 }
 
 // Copy script template.
-fs.cpSync("templates/libs", LIB_DIR, { recursive: true });
+fs.cpSync("templates/library", LIB_DIR, { recursive: true });
 
 ["package.json", "README.md"].forEach((file) => processFile(file));
 
