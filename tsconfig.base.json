@@ -29,6 +29,9 @@
       ],
       "@libs/bb-log": [
         "libs/bb-log/src/index.ts"
+      ],
+      "@libs/bb-fs": [
+        "libs/bb-fs/src/index.ts"
       ]
     }
   }
