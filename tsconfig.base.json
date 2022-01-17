@@ -17,6 +17,9 @@
       ],
       "@libs/UpdateMessage": [
         "libs/UpdateMessage/src/index.ts"
+      ],
+      "@libs/udgraph": [
+        "libs/udgraph/src/index.ts"
       ]
     }
   }
