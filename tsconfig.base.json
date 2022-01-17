@@ -32,6 +32,9 @@
       ],
       "@libs/bb-fs": [
         "libs/bb-fs/src/index.ts"
+      ],
+      "@libs/bb-exec": [
+        "libs/bb-exec/src/index.ts"
       ]
     }
   }
