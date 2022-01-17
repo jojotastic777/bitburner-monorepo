@@ -26,6 +26,9 @@
       ],
       "@libs/bb-nuke": [
         "libs/bb-nuke/src/index.ts"
+      ],
+      "@libs/bb-log": [
+        "libs/bb-log/src/index.ts"
       ]
     }
   }

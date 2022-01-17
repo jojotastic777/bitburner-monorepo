@@ -1,0 +1,20 @@
+{
+  "name": "@bitburner-monorepo-template/bb-log",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --config ../../.prettierrc --write src/",
+    "lint": "eslint --fix ."
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.27.64",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^8.7.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "ramda": "^0.28.0"
+  }
+}
