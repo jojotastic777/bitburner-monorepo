@@ -38,6 +38,12 @@
       ],
       "@libs/bb-deploy": [
         "libs/bb-deploy/src/index.ts"
+      ],
+      "@apps/http-update-server": [
+        "apps/http-update-server/src/index.ts"
+      ],
+      "@libs/http-update-manifest": [
+        "libs/http-update-manifest/src/index.ts"
       ]
     }
   }
