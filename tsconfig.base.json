@@ -20,6 +20,9 @@
       ],
       "@libs/udgraph": [
         "libs/udgraph/src/index.ts"
+      ],
+      "@libs/bb-scan": [
+        "libs/bb-scan/src/index.ts"
       ]
     }
   }

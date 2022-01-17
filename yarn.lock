@@ -17,6 +17,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@bitburner-monorepo-template/bb-scan@workspace:libs/bb-scan":
+  version: 0.0.0-use.local
+  resolution: "@bitburner-monorepo-template/bb-scan@workspace:libs/bb-scan"
+  dependencies:
+    "@types/ramda": ^0.27.64
+    "@typescript-eslint/eslint-plugin": ^5.9.1
+    "@typescript-eslint/parser": ^5.9.1
+    eslint: ^8.7.0
+    prettier: ^2.5.1
+    ramda: ^0.28.0
+    typescript: ^4.5.4
+  languageName: unknown
+  linkType: soft
+
 "@bitburner-monorepo-template/udgraph@workspace:libs/udgraph":
   version: 0.0.0-use.local
   resolution: "@bitburner-monorepo-template/udgraph@workspace:libs/udgraph"
@@ -256,6 +270,15 @@ __metadata:
   version: 2.4.3
   resolution: "@types/prettier@npm:2.4.3"
   checksum: b240434daabac54700c862b0bb52a83fec396e0e9c847447119ba41fd8404d79aadfa174e6306fb094b29efadac586344b7606c3a71c286b71755ab2579d54df
+  languageName: node
+  linkType: hard
+
+"@types/ramda@npm:^0.27.64":
+  version: 0.27.64
+  resolution: "@types/ramda@npm:0.27.64"
+  dependencies:
+    ts-toolbelt: ^6.15.1
+  checksum: 8512be3bf220d63df398fe333aafb21a48e1967300afa629f21de5e35e757bdf37323bd59a67da025ab549520bc9c9119e6ca9702a95948eef5bd17ae9b319d2
   languageName: node
   linkType: hard
 
@@ -1791,6 +1814,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ramda@npm:^0.28.0":
+  version: 0.28.0
+  resolution: "ramda@npm:0.28.0"
+  checksum: 44ea6e5010bba70151b6a92d8114a91915e8b5a16105cce65fae58c9d7386b812c429645e35f21141d7087568550ce383bc10ee1a65cdec951f4b69ea457e6a4
+  languageName: node
+  linkType: hard
+
 "readable-stream@npm:^3.6.0":
   version: 3.6.0
   resolution: "readable-stream@npm:3.6.0"
@@ -2113,6 +2143,13 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 3933ac0a937d33c45e04a6750fcdd3e765eb2897d1da1307cd97ac52af093bcfb632ec0453a75000a65c8b5b7bdb32b1077050a186dcc556e62657cb592e6d49
+  languageName: node
+  linkType: hard
+
+"ts-toolbelt@npm:^6.15.1":
+  version: 6.15.5
+  resolution: "ts-toolbelt@npm:6.15.5"
+  checksum: 24ad00cfd9ce735c76c873a9b1347eac475b94e39ebbdf100c9019dce88dd5f4babed52884cf82bb456a38c28edd0099ab6f704b84b2e5e034852b618472c1f3
   languageName: node
   linkType: hard
 
