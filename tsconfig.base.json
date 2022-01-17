@@ -23,6 +23,9 @@
       ],
       "@libs/bb-scan": [
         "libs/bb-scan/src/index.ts"
+      ],
+      "@libs/bb-nuke": [
+        "libs/bb-nuke/src/index.ts"
       ]
     }
   }
