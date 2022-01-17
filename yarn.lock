@@ -133,6 +133,34 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@bitburner-monorepo-template/ws-stats-server@workspace:apps/ws-stats-server":
+  version: 0.0.0-use.local
+  resolution: "@bitburner-monorepo-template/ws-stats-server@workspace:apps/ws-stats-server"
+  dependencies:
+    "@rollup/plugin-node-resolve": ^13.1.3
+    "@rollup/plugin-typescript": ^8.3.0
+    "@typescript-eslint/eslint-plugin": ^5.9.1
+    "@typescript-eslint/parser": ^5.9.1
+    eslint: ^8.7.0
+    prettier: ^2.5.1
+    rollup: ^2.64.0
+    tslib: ^2.3.1
+    typescript: ^4.5.4
+  languageName: unknown
+  linkType: soft
+
+"@bitburner-monorepo-template/ws-stats-types@workspace:libs/ws-stats-types":
+  version: 0.0.0-use.local
+  resolution: "@bitburner-monorepo-template/ws-stats-types@workspace:libs/ws-stats-types"
+  dependencies:
+    "@typescript-eslint/eslint-plugin": ^5.9.1
+    "@typescript-eslint/parser": ^5.9.1
+    eslint: ^8.7.0
+    prettier: ^2.5.1
+    typescript: ^4.5.4
+  languageName: unknown
+  linkType: soft
+
 "@bitburner-monorepo-template/ws-update-server@workspace:apps/ws-update-server":
   version: 0.0.0-use.local
   resolution: "@bitburner-monorepo-template/ws-update-server@workspace:apps/ws-update-server"

@@ -44,6 +44,12 @@
       ],
       "@libs/http-update-manifest": [
         "libs/http-update-manifest/src/index.ts"
+      ],
+      "@apps/ws-stats-server": [
+        "apps/ws-stats-server/src/index.ts"
+      ],
+      "@libs/ws-stats-types": [
+        "libs/ws-stats-types/src/index.ts"
       ]
     }
   }
