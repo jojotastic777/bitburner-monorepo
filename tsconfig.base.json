@@ -35,6 +35,9 @@
       ],
       "@libs/bb-exec": [
         "libs/bb-exec/src/index.ts"
+      ],
+      "@libs/bb-deploy": [
+        "libs/bb-deploy/src/index.ts"
       ]
     }
   }
