@@ -1,0 +1,23 @@
+{
+  "exclude": [
+    "templates/**/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "paths": {
+      "@global/bitburner": [
+        "@types/NetscriptDefinitions.d.ts"
+      ],
+      "@apps/ws-update-server": [
+        "apps/ws-update-server/src/index.ts"
+      ],
+      "@libs/UpdateMessage": [
+        "libs/UpdateMessage/src/index.ts"
+      ]
+    }
+  }
+}

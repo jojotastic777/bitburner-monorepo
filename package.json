@@ -1,0 +1,44 @@
+{
+  "name": "bitburner-monorepo-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "packageManager": "yarn@3.1.1",
+  "scripts": {
+    "pull-netscript": "ts-node meta/pull-netscript.ts",
+    "create-script": "ts-node meta/create-script.ts",
+    "create-library": "ts-node meta/create-library.ts",
+    "create-app": "ts-node meta/create-app.ts"
+  },
+  "workspaces": [
+    "scripts/**",
+    "libs/**",
+    "apps/**"
+  ],
+  "turbo": {
+    "baseBranch": "master",
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**"
+        ]
+      },
+      "format": {},
+      "lint": {}
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "@types/prettier": "^2.4.3",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "axios": "^0.24.0",
+    "eslint": "^8.7.0",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "turbo": "^1.0.28",
+    "typescript": "^4.5.4"
+  }
+}
